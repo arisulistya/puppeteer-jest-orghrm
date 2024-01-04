@@ -3,5 +3,9 @@
     "jest": "^29.7.0",
     "jest-puppeteer": "^9.0.2",
     "puppeteer": "^21.6.1"
+  },
+  "dependencies": {
+    "chance-cli": "^1.0.7",
+    "fony": "^1.1.0"
   }
 }

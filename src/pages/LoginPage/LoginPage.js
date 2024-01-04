@@ -7,6 +7,16 @@ class LoginPage {
         this.page = page
     }
 
+    async navigateToLoginPage() {
+        await this.page.goto(globals.baseUrl);
+        try {
+            await this.page.waitForNavigation({ waitUntil: 'domcontentloaded' });
+            await this.page.waitForTimeout(2000);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     async loginToApp() {
         await this.page.locator(login.usernameInput).fill(data.users[0].username);
         await this.page.locator(login.passwordInput).fill(data.users[0].password);

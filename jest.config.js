@@ -9,7 +9,7 @@ module.exports = {
       adminPassword : "admin123",
       newAdminUser : "SarahAmalia",
       newAdminPass : "Sarah123",
-      employeeName : "Paulverdo Collings",
+      employeeName : "PaulMockMock CollingsOliveiraOliveira",
     },
   };
   

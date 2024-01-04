@@ -11,8 +11,8 @@ Base setup for Jest to run the test case
 */
 
 // Globals variables
-let browser
-let page
+let browser;
+let page;
 
 // Before each tests suite
 beforeAll(async () => {

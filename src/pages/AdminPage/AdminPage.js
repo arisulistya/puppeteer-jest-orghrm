@@ -1,5 +1,6 @@
 const { globals } = require("../../../jest.config")
 const { admin } = require("./AdminLocator")
+const data = require("./adminData.json")
 
 class AdminPage {
     constructor(page) {
@@ -20,10 +21,11 @@ class AdminPage {
         await this.page.locator(admin.adminSpan).click();
         await this.page.locator(admin.statusSelect).click();
         await this.page.locator(admin.enabledSpan).click();
-        await this.page.locator(admin.passwordInput).fill(globals.newAdminPass);
+        await this.page.locator(admin.passwordInput).fill(data[0]["password"]);
         await this.page.waitForTimeout(2000);
-        await this.page.locator(admin.userNameInput).fill(globals.newAdminUser);
-        await this.page.locator(admin.confirmPasswordInput).fill(globals.newAdminPass);
+        await this.page.locator(admin.userNameInput).fill(data[0]["name"]);
+        await this.page.waitForTimeout(2000);
+        await this.page.locator(admin.confirmPasswordInput).fill(data[0]["password"]);
         await this.page.waitForTimeout(2000);
         await this.page.locator(admin.employeeNameInput).fill(globals.employeeName);
         await this.page.waitForTimeout(2000);
@@ -39,12 +41,12 @@ class AdminPage {
     }
 
     async verifyAddUser() {
-        await this.page.locator(admin.searchInput).fill(globals.newAdminUser);
+        await this.page.locator(admin.searchInput).fill(data[0]["name"]);
         await this.page.locator(admin.searchButton).click();
         await this.page.waitForTimeout(5000);
         
         const textValue = await this.page.$eval(admin.searhResult, element => element.textContent);
-        await expect(textValue).toBe(globals.newAdminUser);
+        await expect(textValue).toBe(data[0]["name"]);
     }
 }
 
